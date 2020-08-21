@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Tra từ</h2>
-<form action="/result" method="get">
+<form action="/home/result" method="get">
     <input type="text" name="keyword" placeholder="Input keyword">
     <input type="submit" value="Search">
 </form>

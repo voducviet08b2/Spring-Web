@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@RequestMapping("/home")
 @Controller
 public class TinhToanController {
     @RequestMapping(value = "/tinhtoan")
@@ -18,7 +18,7 @@ public class TinhToanController {
         return "tinhtoan";
     }
     @RequestMapping(value="/result",method = RequestMethod.GET)
-    public ModelAndView result(@RequestParam String keyword){
+    public ModelAndView result(@RequestParam(name = "keyword") String keyword){
         Map<String,String> list=new HashMap<>();
         list.put("hello","xin chào");
         list.put("goodbye","tạm biệt");
