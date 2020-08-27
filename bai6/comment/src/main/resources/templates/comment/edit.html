@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Comment</title>
+</head>
+<body>
+<h2>Edit Comment</h2>
+<form th:action="@{/edit-comment}" method="post" th:object="${comment}">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <label for="">URL image</label>
+    <input th:type="text" name="author" th:field="*{author}">
+    <label for="">Feedback</label>
+    <input th:type="text" name="feedback" th:field="*{feedback}">
+    <label for="">Total like</label>
+    <input th:type="text" name="totalLike" th:field="*{totalLike}">
+    <input type="submit">
+</form>
+</body>
+</html>
