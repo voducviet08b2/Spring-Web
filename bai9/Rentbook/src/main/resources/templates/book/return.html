@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang trả sách</title>
+</head>
+<body>
+<h2>Trang trả sách</h2>
+<form th:action="@{/return}" method="post">
+    <label for="">Input Code Rent</label>
+    <input type="text" th:name="codeRent"><br>
+    <input type="submit">
+</form>
+</body>
+</html>

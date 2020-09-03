@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <p>Book name: </p>
+   <p th:text="${book.getName()}"></p>
+   <p>Rent Code: </p>
+   <p th:text="${codeRent}"></p>
+<!--   <p th:text="${codeRent}"></p>-->
+<!--    <p th:text="${id}"></p>-->
+    <form th:action="@{/rent}" method="post" th:object="${rent}">
+        <input type="hidden" name="book" th:value="${id}" >
+        <input type="hidden" name="codeRent" th:value="${codeRent}">
+        <input type="submit" th:value="Accept">
+    </form>
+</body>
+</html>
