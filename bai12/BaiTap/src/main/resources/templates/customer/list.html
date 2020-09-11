@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#searchForm').submit(function(event) {
+                 var id = $('#inputSearch').val();
+                // var model = $('#model').val();
+                // var price = $('#price').val();
+                // var json = { "producer" : producer, "model" : model, "price": price};
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    type : "GET",
+                    data: id,
+                    url: "/search",
+                    success: function(customer) {
+                        var respContent = "";
+                        respContent += "<span class='success'>Smartphone was created: [";
+                        respContent += customer.name + " : ";
+                        respContent += customer.age + " : " ;
+                        respContent += customer.name + "]</span>"
+                        $("#result").html(respContent);
+                    }
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+<a th:href="@{/create-customer}">Create Customer</a><br>
+<form id="searchForm">
+    <input type="text" name="search" id="inputSearch" placeholder="Search name">
+    <input type="submit">
+</form>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div id="result">
+
+</div>
+</body>
+</html>
