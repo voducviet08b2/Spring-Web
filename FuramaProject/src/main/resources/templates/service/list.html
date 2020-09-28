@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="./head"></th:block>
+<title>List Customer</title>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-2" style="display: flex;flex-direction: column;justify-content: center;align-items: flex-start;background-color: rgb(231, 231, 231)">
+            <a th:href="@{/create-service}">Create</a>
+            <br>
+            <a href="">Edit</a>
+            <br>
+            <a href="">Delete</a>
+            <br>
+            <a href="">Show</a>
+        </div>
+        <div class="col-10">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Floor</th>
+                    <th scope="col">Max Person</th>
+                    <th scope="col">Rent Cost</th>
+                    <th scope="col">Rent Type</th>
+                    <th scope="col">Type Service</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="service : ${serviceList}">
+
+                    <tr>
+                        <th scope="row" th:text="${service.id}"></th>
+                        <td th:text="${service.name}"></td>
+                        <td th:text="${service.area}"></td>
+                        <td th:text="${service.floorCount}"></td>
+                        <td th:text="${service.maxPerson}"></td>
+                        <td th:text="${service.rentCost}"></td>
+                        <td th:text="${service.rentType.name}"></td>
+                        <td th:text="${service.serviceType.name}"></td>
+                        <td th:text="${service.status}"></td>
+                        <td><a class="btn btn-danger" th:href="@{/delete-service/{id}(id=${service.id})}">DELETE</a></td>
+                        <td><a class="btn btn-warning" th:href="@{/edit-service/{id}(id=${service.id})}">EDIT</a></td>
+
+
+
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

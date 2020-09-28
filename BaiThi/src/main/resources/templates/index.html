@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="header" >
+    <div class="container pt-2">
+        <div class="row">
+            <div class="col-3">
+                <img src="https://upload.wikimedia.org/wikipedia/vi/archive/d/dc/20200125142348%21Vinfast-logo.png" alt="" width="60pxpx" height="60px">
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-3">
+                <h2>Võ Đức Việt</h2>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="menu" style="background-color: blanchedalmond;">
+    <div class="container">
+        <div class="row" style="display:flex;align-items: center;">
+
+            <div class="col-3">
+                <a th:href="@{/create}">Tạo Khuyến mại</a>
+            </div>
+            <div class="col-3">
+                <form th:action="@{/searchSaleOff}" style="display: flex" >
+                    <input type="text" class="form-control" name="keyword" placeholder="Search Sale Off">
+                    <input type="submit">
+                </form>
+            </div>
+            <div class="col-3">
+                <form th:action="@{/searchDateStart}" style="display: flex" >
+                    <input type="date" class="form-control" name="keyword" placeholder="Search Date Start">
+                    <input type="submit">
+                </form>
+            </div>
+            <div class="col-3">
+                <form th:action="@{/searchDateEnd}" style="display: flex" >
+                    <input type="date" class="form-control" name="keyword" placeholder="search">
+                    <input type="submit">
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="container">
+    <div class="row">
+        <p>Tìm kiếm nhiều điều kiện</p>
+        <form th:action="@{/searchAll}" style="display: flex" >
+            <input type="text" class="form-control" name="sale" placeholder="search Sale Off">
+            <input type="date" class="form-control" name="date1" placeholder="search date start">
+            <input type="date" class="form-control" name="date2" placeholder="search date end">
+            <input type="submit" value="searchAll">
+        </form>
+    </div>
+</div>
+<hr>
+<title>List Customer</title>
+<body>
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date Start</th>
+                    <th scope="col">Date End</th>
+                    <th scope="col">Sale Off</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="khuyenMai : ${khuyenMaiList}">
+
+                    <tr>
+                        <th scope="row" th:text="${khuyenMai.id}"></th>
+                        <td th:text="${khuyenMai.title}"></td>
+                        <td th:text="${khuyenMai.timeStart}"></td>
+                        <td th:text="${khuyenMai.timeEnd}"></td>
+                        <td th:text="${khuyenMai.saleOff}"></td>
+                        <td th:text="${khuyenMai.detail}"></td>
+                        <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${khuyenMai.id})}" >DELETE</a></td>
+                        <td><a class="btn btn-warning" >EDIT</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

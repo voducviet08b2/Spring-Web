@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="./head"></th:block>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+</head>
+<body>
+<a th:href="@{/create-detail-contact}" class="btn btn-success">Create Contact Detail</a>
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <form th:action="@{/contact}" th:object="${contact}" method="post">
+            <label for="">Date Start Contract</label>
+            <input type="date" class="form-control" th:field="*{dateStart}">
+            <label for="">Date End Contract</label>
+            <input type="date" class="form-control" th:field="*{dateEnd}">
+            <label for="">Total money</label>
+            <input type="text" class="form-control" th:field="*{totalMoney}">
+            <label for="">Deposit money</label>
+            <input type="text" class="form-control" th:field="*{deposit}">
+
+            <label for="">Customer Name</label>
+            <select name="customer">
+                <option th:each="c : ${customerList}"
+                        th:value="${c.id}"
+                        th:text="${c.name}"
+                ></option>
+            </select>
+                <br>
+                <label for="">Service Name</label>
+                <select name="service">
+                    <option th:each="s : ${serviceList}"
+                            th:value="${s.id}"
+                            th:text="${s.name}"
+                    ></option>
+                </select>
+                <br>
+                <label for="">Employee Name</label>
+                <select name="employee">
+                    <option th:each="e : ${employeeList}"
+                            th:value="${e.id}"
+                            th:text="${e.name}"
+                    ></option>
+                </select>
+                <br>
+            <input type="submit" value="Create Contact">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

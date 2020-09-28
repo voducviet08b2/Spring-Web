@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="./head"></th:block>
+<head>
+    <meta charset="UTF-8">
+    <title>Create service</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <form th:action="@{/create-service}" th:object="${service}" method="post">
+                <input type="hidden" class="form-control" th:field="*{id}">
+                <label for="">Name</label>
+                <input type="text" class="form-control" th:field="*{name}">
+                <label for="">Area</label>
+                <input type="text" class="form-control" th:field="*{area}">
+                <label for="">Floor</label>
+                <input type="text" class="form-control" th:field="*{floorCount}">
+                <label for="">Max Person</label>
+                <input type="text" class="form-control" th:field="*{maxPerson}">
+                <label for="">Rent Code</label>
+                <input type="text" class="form-control" th:field="*{rentCost}">
+                <label for="">Status</label>
+                <!--                <input type="text" class="form-control" th:field="*{status}">-->
+                <select name="status">
+                    <option value="Avaliable" th:selected="(*{status}=='Avaliable')">Avaliable</option>
+                    <option value="Not Avaliable" th:selected="(*{status}=='Not Avaliable')">Not Avaliable</option>
+                </select>
+                <br>
+                <label for="">Rent Type</label>
+                <select name="rentType">
+                    <option th:each="renttype : ${rentTypeList}"
+                            th:value="${renttype.id}"
+                            th:text="${renttype.name}"
+                            th:selected="(${renttype.id}==*{rentType.id})"
+                    ></option>
+                </select>
+                <br>
+                <label for="">Service Type</label>
+                <select name="serviceType">
+                    <option th:each="servicetype : ${serviceTypeList}"
+                            th:value="${servicetype.id}"
+                            th:text="${servicetype.name}"
+                            th:selected="(${servicetype.id}==*{serviceType.id})"
+                    ></option>
+                </select>
+                <br>
+                <input type="submit" value="Edit Service">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

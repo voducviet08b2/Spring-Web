@@ -1,0 +1,13 @@
+[
+  {"Note":
+  {
+    "note_type":"Công việc",
+    "name":"tiền",
+    "id":1,
+    "content":"Đi đábóng"}
+  }
+,{
+  "Note":
+  {"note_type":"Gia Đình","name":"ngủ","id":2,"content":"Nghỉ ngơi"}
+}
+]

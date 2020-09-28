@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Tạo</title>
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+<h2>Tạo Chương Trình Khuyến Mại</h2>
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <form th:action="@{/create}" th:object="${khuyenMai}" method="post">
+                <label for="">Title</label>
+                <input type="text" class="form-control" th:field="*{title}">
+                <p style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+                <label for="">Date Start</label>
+                <input type="date" class="form-control" th:field="*{timeStart}">
+                <p style="color: red" th:if="${#fields.hasErrors('timeStart')}" th:errors="*{timeStart}"></p>
+                <label for="">Date End</label>
+                <input type="date" class="form-control" th:field="*{timeEnd}">
+                <p style="color: red" th:if="${#fields.hasErrors('timeEnd')}" th:errors="*{timeEnd}"></p>
+                <label for="">Sale Off</label>
+                <input type="text" class="form-control" th:field="*{saleOff}">
+                <p style="color: red" th:if="${#fields.hasErrors('saleOff')}" th:errors="*{saleOff}"></p>
+                <label for="">Detail</label>
+                <input type="text" class="form-control" th:field="*{detail}">
+                <p style="color: red" th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"></p>
+
+                <br>
+                <input type="submit" value="Tạo Khuyến mại">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

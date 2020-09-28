@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="./head"></th:block>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <form th:action="@{/create-detail-contact}" th:object="${contactDetail}" method="post">
+                <label for="">Count</label>
+                <input type="text" class="form-control" th:field="*{count}">
+
+
+                <label for="">Contact Name</label>
+                <select name="contact">
+                    <option th:each="c : ${contactList}"
+                            th:value="${c.id}"
+                            th:text="${c.dateStart}"
+                    ></option>
+                </select>
+                <br>
+                <label for="">Attach Service Name</label>
+                <select name="attachService">
+                    <option th:each="a : ${attachServiceList}"
+                            th:value="${a.id}"
+                            th:text="${a.name}"
+                    ></option>
+                </select>
+                <br>
+
+                <input type="submit" value="Create Contact Detail">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

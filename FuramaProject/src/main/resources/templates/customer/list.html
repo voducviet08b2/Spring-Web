@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="./head"></th:block>
+<title>List Customer</title>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-2" style="display: flex;flex-direction: column;justify-content: center;align-items: flex-start;background-color: rgb(231, 231, 231)">
+            <a th:href="@{/create-customer}">Create</a>
+            <br>
+            <a th:href="@{/view-customer}">View Customer Contact</a>
+            <br>
+            <a href="">Delete</a>
+            <br>
+            <a href="">Show</a>
+        </div>
+        <div class="col-10">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Id Card</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Customer Type</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="customer : ${customerList}">
+
+                <tr>
+                    <th scope="row" th:text="${customer.id}"></th>
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.birth}"></td>
+                    <td th:text="${customer.cmnd}"></td>
+                    <td th:text="${customer.phone}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.address}"></td>
+                    <td th:text="${customer.customerType.name}"></td>
+                    <td><a class="btn btn-danger" th:href="@{/delete-customer/{id}(id=${customer.id})}">DELETE</a></td>
+                    <td><a class="btn btn-warning" th:href="@{/edit-customer/{id}(id=${customer.id})}">EDIT</a></td>
+
+
+
+                </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

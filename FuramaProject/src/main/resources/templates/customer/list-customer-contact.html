@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="./head"></th:block>
+<title>List Customer</title>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-2" style="display: flex;flex-direction: column;justify-content: center;align-items: flex-start;background-color: rgb(231, 231, 231)">
+
+            <br>
+            <a href="">Edit</a>
+            <br>
+            <a href="">Delete</a>
+            <br>
+            <a href="">Show</a>
+        </div>
+        <div class="col-10">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Contact</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="customer : ${customerList}">
+
+                <tr>
+                    <th scope="row" th:text="${customer.id}"></th>
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.address}"></td>
+                    <td th:text="${customer.birth}"></td>
+                    <td th:text="${customer.cmnd}"></td>
+                    <td>
+                    <select name="" id="">
+                    <th:block th:each="c : ${customer.contactsList}">
+
+                            <option value="" th:text="${c.dateStart}"></option>
+
+                    </th:block>
+                    </select>
+                    </td>
+
+
+                </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

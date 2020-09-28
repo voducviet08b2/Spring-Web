@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <form th:action="@{/create-customer}" th:object="${customer}" method="post">
+
     <input th:type="hidden" name="id"  th:field="*{id}">
     <table>
         <tr>
